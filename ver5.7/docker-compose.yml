@@ -1,0 +1,16 @@
+version: '3'
+services:
+  mysql:
+    build: .
+    container_name: test_tuning_db
+    env_file: ./mysql/mysql.env
+    environment:
+      - TZ=Asia/Tokyo
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./mysql/conf:/etc/mysql/conf.d/:ro
+      - mysqldata57:/var/lib/mysql
+
+volumes:
+  mysqldata57:
